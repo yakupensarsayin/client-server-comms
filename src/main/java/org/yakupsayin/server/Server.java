@@ -34,9 +34,6 @@ public class Server{
                 // Assign a new handler to handle the new client's requests.
                 ClientHandler newClient = new ClientHandler(clients, clientSocket);
 
-                // Add connected client to list.
-                clients.add(newClient);
-
                 // Since we will have more than one client, we assign a dedicated thread to them.
                 Thread clientThread = new Thread(newClient);
                 clientThread.start();

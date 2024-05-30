@@ -14,8 +14,8 @@ public class Communications {
      */
     public static String readMessage(InputStream is){
         try {
-             // We allocate an array of 1024 bytes.
-            byte[] messageByte = new byte[1024];
+            // We allocate an array of 1024 bytes.
+            byte[] messageByte = new byte[8192];
 
             // We get the number of bytes read by InputStream.
             int bytesRead = is.read(messageByte);
@@ -43,6 +43,7 @@ public class Communications {
         try {
             byte[] messageByte = message.getBytes(StandardCharsets.UTF_8);
             os.write(messageByte);
+            os.flush();
         } catch (IOException e) {
             System.out.println("An error was encountered while trying to write a message: " + e.getMessage());
         }
